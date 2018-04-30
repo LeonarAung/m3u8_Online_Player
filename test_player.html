@@ -1,0 +1,33 @@
+<style>
+#player {
+  width:100%;
+height: 300px;
+}
+</style>
+<script
+  src="//code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="//bunnylive.tv/js/uikit.min.js"></script>
+  <script src="//bunnylive.tv/js/video-js@5.11.6.js"></script>
+  <script src="//bunnylive.tv/js/videojs-contrib-hls@1.0.3.js"></script>
+<link rel="stylesheet" href="//bunnylive.tv/css/video-js@5.0.css" />
+ <video id="player" class="video-js vjs-default-skin" controls="controls"></video>
+<script>
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+var embed=getUrlParameter('video');
+var playert = videojs("player");
+playert.src({
+        src: embed,
+        type: 'application/x-mpegURL',
+        withCredentials: true
+      });
+// document.getElementById("player").getElementsByTagName("source")[0].src = embed;
+      playert.play();
+
+</script>
